@@ -3,7 +3,7 @@ const CONF = {
     rootPathname: '',
 
     // 微信小程序 App ID
-    appId: 'XXX',
+    appId: 'XXX',//此处换为你的appId
 
     // 微信小程序 App Secret
     appSecret: '',
@@ -21,7 +21,7 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'XXX',
+        pass: 'XXX',//此处换为你的appId
         char: 'utf8mb4'
     },
 
