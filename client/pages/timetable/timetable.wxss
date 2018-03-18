@@ -1,0 +1,126 @@
+page {
+  background-color: #f2f6f7;
+}
+
+.backImg {
+  margin-top: 80rpx;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  opacity: 0.2;
+}
+
+.root {
+  display: flex;
+  direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.table {
+  margin-top: 86rpx;
+  width: 100%;
+  display: flex;
+  direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.tr {
+  width: 100%;
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.th, .td {
+  width: 90rpx;
+  border-bottom: 1rpx dashed #ddd;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 40rpx;
+  word-break: break-all;
+}
+
+.td {
+  font-size: 25rpx;
+}
+
+.time {
+  width: 60rpx;
+  height: 350rpx;
+  font-size: 30rpx;
+  /* background-color: #eef2ef; */
+  border-right: 1rpx dashed #ddd;
+}
+
+.tr_week {
+  width: 100%;
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: fixed;
+  background-color: #c4a19d;
+  color: #fff;
+}
+
+.th_week {
+  width: 94rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  word-break: break-all;
+}
+
+.th_last {
+  width: 60rpx;
+  border-bottom: 1rpx dashed #ddd;
+  border-right: 1rpx dashed #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #eef2ef; */
+  word-break: break-all;
+  inline-size: 60rpx;
+  font-size: 26rpx;
+  height: 150rpx;
+}
+
+.td_last {
+  width: 680rpx;
+  border-bottom: 1rpx dashed #ddd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  word-break: break-all;
+  font-size: 26rpx;
+  height: 150rpx;
+}
+
+.card {
+  border-radius: 20rpx;
+  color: #fff;
+  height: 345rpx;
+  display: flex;
+  align-items: center;
+}
+
+.first {
+  width: 64rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #c33;
+}
+
+.weekTimeTitle {
+  font-size: 26rpx;
+}

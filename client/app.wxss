@@ -1,0 +1,6 @@
+/**app.wxss**/
+
+
+page {
+  background-color: #f2f6f7;
+}

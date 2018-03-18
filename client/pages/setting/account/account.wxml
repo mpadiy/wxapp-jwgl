@@ -1,0 +1,27 @@
+<view class="root">
+  <view class="weui-cells__title">用户登录</view>
+  <view class="weui-cells weui-cells_after-title">
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">学号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入学号" bindchange="bindChangeId" />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">密码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="password" placeholder="请输入密码" bindchange="bindChangePwd" />
+      </view>
+    </view>
+
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="bindTapLogin">登录</button>
+  </view>
+</view>

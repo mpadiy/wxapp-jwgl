@@ -1,0 +1,135 @@
+<wxs module='isSubjectInWeek'>
+  module.exports = function(week, weekNow) {
+    if (week == '') return false;
+    var regexp1 = getRegExp('[0-9,\-]+');
+    var regexp2 = getRegExp('-');
+    var regexp3 = getRegExp('([0-9]+)-([0-9]+)');
+    var regexp4 = getRegExp('\(([单|双]{0,1})周\)');
+    var txt = regexp1.exec(week)[0];
+    txt = txt.split(',');
+    var range = [];
+
+    for (var i = 0; i < txt.length; i++) {
+      if (regexp2.exec(txt[i])) {
+        var a = regexp3.exec(txt[i])[1];
+        var b = regexp3.exec(txt[i])[2];
+        a = Number(a);
+        b = Number(b);
+
+        for (var j = a; j <= b; j++) {
+          range.push(j);
+        }
+      } else {
+        txt[i] = Number(txt[i]);
+        range.push(txt[i]);
+      }
+    }
+    txt = regexp4.exec(week)[1];
+    console.log(range);
+    for (var i = 0; i < range.length; i++) {
+      if (txt == '单') {
+        if (range[i] == weekNow && range[i] % 2 == 1) {
+          return true;
+        }
+      } else if (txt == '双') {
+        if (range[i] == weekNow && range[i] % 2 == 0) {
+          return true;
+        }
+      } else {
+        if (range[i] == weekNow) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+</wxs>
+<wxs module='getColor'>
+  module.exports = function(x, y) {
+    var colorSet = ['#EB9FA1', '#5BC1E7', '#93D162', '#88ADEA', '#75C0AC', '#E097B5', '#EAC973'];
+    return colorSet[(x * y) % 7];
+  }
+</wxs>
+<wxs module='getDateNow'>
+  module.exports = function(x, y) {
+    var date = getDate();
+    date = parseInt(date.getMonth()) + 1 + "-" + parseInt(getDate().getDate());
+    return date;
+  }
+</wxs>
+
+<view class='root'>
+  <image class='backImg' src='./../../images/timetable/conan.jpg'></image>
+  <view class='tr_week'>
+    <view class='th_week first'>
+      <view class='th_week first'>
+        <picker class='first' bindchange='bindChangeWeek' value='{{weekNow - 1}}' range='{{weekList}}'>
+          <view class='picker weekTimeTitle'>
+            周次
+          </view>
+        </picker>
+      </view>
+    </view>
+    <block wx:for='{{7}}' wx:for-item='i'>
+      <block wx:if='{{getDateNow() == dateList[i]}}'>
+        <view class='th_week' style='color:#93D162'>{{dateList[i]}}</view>
+      </block>
+      <block wx:else>
+        <view class='th_week' style='color:#EAC973'>{{dateList[i]}}</view>
+      </block>
+    </block>
+    <view class='th_week first'>
+      <picker bindchange='bindChangeWeek' value='{{weekNow - 1}}' range='{{weekList}}'>
+        <view class="picker weekTime">
+          <block wx:if='{{weekNow == 1}}'>
+            {{weekNow}}›
+          </block>
+          <block wx:elif='{{weekNow == 25}}'>
+            ‹{{weekNow}}
+          </block>
+          <block wx:else>
+            ‹{{weekNow}}›
+          </block>
+        </view>
+      </picker>
+    </view>
+    <view class='th_week'>一</view>
+    <view class='th_week'>二</view>
+    <view class='th_week'>三</view>
+    <view class='th_week'>四</view>
+    <view class='th_week'>五</view>
+    <view class='th_week'>六</view>
+    <view class='th_week'>日</view>
+  </view>
+  <view class='table'>
+    <block wx:for='{{[1,2,3,4,5]}}' wx:for-item='x'>
+      <view class='tr'>
+        <view class='th time'>
+          <text>{{x * 2 - 1}}\n\n\n\n{{x * 2}}</text>
+        </view>
+        <block wx:for='{{[1,2,3,4,5,6,7]}}' wx:for-item='y'>
+          <view class='td'>
+            <block wx:if='{{timetable}}'>
+              <block wx:for='{{timetable.length - 1}}' wx:for-item='i'>
+                <block wx:if='{{timetable[i].x == x && timetable[i].y == y && isSubjectInWeek(timetable[i].week, weekNow)}}'>
+                  <view class='card' style='background-color: {{getColor(x, y)}};border: 2rpx solid {{getColor(x, y)}};'>
+                    <text>{{timetable[i].subject}}\n{{timetable[i].teacher}}\n{{timetable[i].classroom}}</text>
+                  </view>
+                </block>
+              </block>
+            </block>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <view class='tr'>
+    <view class='th_last'>
+      <text>备注</text>
+    </view>
+    <view class='td_last'>
+      <text>{{timetable[timetable.length - 1].note}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<view class="root">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:if="{{userInfo.id && userInfo.name}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>学号：{{userInfo.id}}\n姓名：{{userInfo.name}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <navigator url="./account/account" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">
+          <text>账号设置</text>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </block>
+  </view>
+
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">课表设置</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">关于嵙嵙</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <block wx:if="{{userInfo.id && userInfo.name}}">
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="warn" bindtap="bindtapLogout">退出登录</button>
+    </view>
+  </block>
+</view>

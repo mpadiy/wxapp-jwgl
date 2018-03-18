@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/setting/setting",
+    "pages/setting/account/account",
+    "pages/timetable/timetable"
+  ],
+  "window": {
+    "backgroundColor": "#C4A19D",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#C4A19D",
+    "navigationBarTitleText": "嵙嵙",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/home/home.png",
+        "selectedIconPath": "images/home/home2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/timetable/timetable",
+        "iconPath": "images/timetable/timetable.png",
+        "selectedIconPath": "images/timetable/timetable2.png",
+        "text": "课程表"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "images/setting/setting.png",
+        "selectedIconPath": "images/setting/setting2.png",
+        "text": "设置"
+      }
+    ]
+  }
+}
